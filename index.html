@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şerefiniz Var mı?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: white;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        button {
+            padding: 15px 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+        }
+        #yesBtn {
+            background-color: #42b72a;
+            color: white;
+            position: absolute; /* Kaçması için absolute gerekli */
+            z-index: 999;
+        }
+        #noBtn {
+            background-color: #fa3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Şerefiniz var mı?</h1>
+    
+    <div class="container">
+        <button id="yesBtn">EVET</button>
+        <button id="noBtn" onclick="alert('Dürüstlüğünüz takdire şayan.')">HAYIR</button>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        
+        // Fare butonun üzerine geldiğinde (veya dokunulduğunda) çalışır
+        yesBtn.addEventListener('mouseover', function() {
+            // Ekran boyutlarını al
+            const x = Math.random() * (window.innerWidth - yesBtn.clientWidth);
+            const y = Math.random() * (window.innerHeight - yesBtn.clientHeight);
+            
+            // Butonu yeni rastgele konuma ışınla
+            yesBtn.style.left = x + 'px';
+            yesBtn.style.top = y + 'px';
+        });
+
+        // Mobil cihazlar için dokunma desteği
+        yesBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const x = Math.random() * (window.innerWidth - yesBtn.clientWidth);
+            const y = Math.random() * (window.innerHeight - yesBtn.clientHeight);
+            yesBtn.style.left = x + 'px';
+            yesBtn.style.top = y + 'px';
+        });
+    </script>
+
+</body>
+</html>
